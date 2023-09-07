@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "zilWorkout": {
+    "zil-money-test": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/zil-workout",
+            "outputPath": "dist/zil-money-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "zilWorkout:build:production"
+              "browserTarget": "zil-money-test:build:production"
             },
             "development": {
-              "browserTarget": "zilWorkout:build:development"
+              "browserTarget": "zil-money-test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "zilWorkout:build"
+            "browserTarget": "zil-money-test:build"
           }
         },
         "test": {

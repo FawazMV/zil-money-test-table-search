@@ -1,0 +1,62 @@
+<div class="pt-10">
+  <table class="border">
+    <thead>
+      <tr class="h-10 bg-gray-400/50 text-gray-800">
+        <th class="text-left pl-2">Name</th>
+        <th class="text-left pl-2">Company Name</th>
+        <th class="text-left pl-2">Designation</th>
+      </tr>
+
+      <tr>
+        <!-- used a component for managing input box -->
+        <td class="p-1">
+          <app-input-box (onInputChange)="name = $event" />
+        </td>
+        <td class="p-1">
+          <app-input-box (onInputChange)="company = $event" />
+        </td>
+        <td class="p-1">
+          <app-input-box (onInputChange)="designation = $event" />
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngIf="workersData | async as workers">
+        <ng-container
+          *ngIf="
+            workers
+              | search : 'name' : name
+              | search : 'company' : company
+              | search : 'designation' : designation as datas
+          "
+        >
+          <!-- loopin the resulted data -->
+          <tr
+            class="border-b"
+            *ngFor="let data of datas"
+            [ngClass]="{
+              'bg-green-300/50':
+                data.company.designation === 'angular Developer'
+            }"
+          >
+            <td class="pl-2">
+              <p class="font-bold">{{ data.name }}</p>
+              <p>{{ data.email }}</p>
+            </td>
+            <td class="pl-2">
+              {{ data.company.name }}
+            </td>
+            <td class="pl-2">
+              {{ data.company.designation }}
+            </td>
+          </tr>
+          <!-- if search data is empty -->
+          <tr *ngIf="datas.length === 0">
+            <td colspan="3" class="text-center">No files available</td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
